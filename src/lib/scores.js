@@ -10,9 +10,7 @@ export default class Scores {
 
   static insertNewScore(userName, userScore) {
     return knex('user_scores')
-      .insert({
-        name: userName,
-        score: userScore
-      });
+      .insert({ name: userName, score: userScore })
+      .returning(['name', 'score']);
   }
 }
