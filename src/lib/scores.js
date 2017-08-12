@@ -1,11 +1,13 @@
 import knex from '../../db/knex';
 
 export default class Scores {
-
   static getHighScores() {
-    return knex('user_scores')
-      .orderBy('score', 'desc')
-      .limit(10);
+    return knex.raw(`
+      SELECT t.*
+      FROM user_scores t
+      ORDER BY t.score DESC
+      LIMIT 10
+    `);
   }
 
   static insertNewScore(userName, userScore) {
