@@ -2,7 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('user_scores', (table) => {
     table.increments();
     table.string('name').notNullable()
-    table.string('score').notNullable();
+    table.bigInteger('score').notNullable();
     table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
   });
